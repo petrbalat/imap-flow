@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="imap-flow.ts" type="DenoConfigurationType" inputPath="$PROJECT_DIR$/imap-flow.ts" programParameters="run -A">
+    <option name="envs">
+      <entry key="EMAIL_HOST" value="wes1-imap.wedos.net" />
+      <entry key="EMAIL_PASSWORD" value="xxx" />
+      <entry key="EMAIL_PORT" value="993" />
+      <entry key="EMAIL_USER" value="xxx" />
+    </option>
+    <method v="2" />
+  </configuration>
+</component>
