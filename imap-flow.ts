@@ -52,6 +52,7 @@ export async function listInboxMails(
         lock.release();
         await client.logout();
     }
+    list.sort((a, b) => a.seq - b.seq);
     return list;
 }
 
