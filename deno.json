@@ -4,7 +4,7 @@
   "version": "0.2.7",
   "license": "MIT",
   "tasks": {
-    "dev": "deno serve --unstable-cron -A --watch src/main.ts"
+    "dev": "deno run -A --watch imap-flow.ts"
   },
   "publish": {
     "exclude": [".run", "node_modules"]

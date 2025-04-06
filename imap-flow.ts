@@ -83,6 +83,7 @@ export async function* downloadEmails(
 }
 
 if (import.meta.main) {
+    console.log("main");
     const connection: Connection = {
         host: Deno.env.get("EMAIL_HOST")!,
         port: +(Deno.env.get("EMAIL_PORT") ?? "993"),
@@ -91,7 +92,7 @@ if (import.meta.main) {
         pass: Deno.env.get("EMAIL_PASSWORD")!,
     };
 
-    const emailToDownload = await listInboxMails(connection);
+    const emailToDownload: Array<FetchMessageObject> = await listInboxMails(connection);
     console.log(emailToDownload)
 
     const seqs: number[] = emailToDownload.map((it) => it.seq);
