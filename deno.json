@@ -1,7 +1,7 @@
 {
   "name": "@softdeluxe/imap-flow",
   "exports": "./mod.ts",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "license": "MIT",
   "tasks": {
     "dev": "deno run -A --watch imap-flow.ts"

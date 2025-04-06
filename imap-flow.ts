@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/imapflow@1.0.19"
-import { ImapFlow } from "npm:imapflow@1.0.164";
+import { ImapFlow } from "npm:imapflow@1.0.184";
 import { extract, type LetterparserMail } from "npm:letterparser@0.1.8";
 import type { FetchQueryObject, Connection, FetchMessageObject } from "./types.ts";
 import {LetterparserMailEx} from "./types.ts";
@@ -66,15 +66,15 @@ export async function* downloadEmails(
     seqs: Array<number>,
 ): AsyncGenerator<LetterparserMailEx> {
     const client = await connect(connection);
-    const lock = await client.getMailboxLock("INBOX");
+    const lock = await client.getMailboxLock("INBOX", {readonly: true});
 
     try {
         for (const seq of seqs) {
-            const single = await client.fetchOne(seq.toString(), {source: true, uid: true});
+            const single = await client.fetchOne(seq.toString(), {source: true});
             if (!single.source) continue;
 
             const parseMail: LetterparserMail = extract(single.source.toString());
-            yield {...parseMail, uid: single.uid, seq: single.seq};
+            yield {...parseMail, uid: single.uid, seq};
         }
     } finally {
         lock.release();
